@@ -8,14 +8,15 @@ const EachShop = (props) =>{
 	const display = ()=>{
 		setClick(1)
 	}
+	const disappear =() =>{
+		setClick(0)
+	}
 	let show
-	if (click === 0){
-		show = shop.name
-	}else if (click === 1){
+	if (click === 1){
 		show = `We serve: ${shop.tags} ❤️`
 	}
 	return (
-		<div className = 'section' onClick={display} >
+		<div className = 'section' onMouseOver={display} onMouseLeave={disappear}>
 			<h3 className='shop_name'>{shop.name}</h3>
 			{click===1 &&
 				<h3 className='shop_tag'>{show}</h3>
