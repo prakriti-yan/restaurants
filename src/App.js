@@ -1,49 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
+import Print from './components/Print'
+import Button from './components/Button'
 
-const Eachshop = (props) =>{
-	const { shop } = props;
-	return (
-		<div className = 'section'>
-			<h3 className='shop_name'>{shop.name} </h3>
-			<img className='image' src = {shop.image} alt = {shop.name}/>
-		</div>
-	)
-}
-
-const Print =(props) =>{
-	const { data } = props;
-	const row = () => data.map(shop =>
-		<Eachshop key= {shop.location} shop = {shop} /> )
-	return(
-		<>
-			{row()}
-		</>
-	)
-}
-const Button = (props) =>{
-	const { sort, value } = props;
-	return (
-		<div>
-		<button  className='button' onClick={sort}>
-			  {value}
-		</button>
-		</div>
-	)
-}
-const firstButton = document.getElementsByClassName('button'); 
-
-firstButton.onClick = ()=>{
-	firstButton.style.visibility = "hidden";
-}
+let sortSate = 0;
 
 const App = ()=> {
-
 	const [ data, setData] = useState([]) 
-
-	const sortShopA = (event) =>{
-	// event.preventDefault();
+	let sortFunction;
+	// Function for sorting ascendingly:
+	const sortShopA = () =>{
+	sortSate= 1;
 	const newData = [...data];
 	newData.sort((a, b) =>{
 		const nameA = a.name.toUpperCase();
@@ -57,9 +25,9 @@ const App = ()=> {
 	})
 	setData(newData);
 	}
-
-	const sortShopD = (event) =>{
-		// event.preventDefault();
+	// Function for sorting descendingly:
+	const sortShopD = () =>{
+		sortSate = 2;
 		const newData = [...data];
 		newData.sort((a, b) =>{
 			const nameA = a.name.toUpperCase();
@@ -73,7 +41,7 @@ const App = ()=> {
 		})
 		setData(newData);
 		}
-
+	// getting the data from json server using axios:
 	useEffect(()=>{
 		axios
 		  .get('http://localhost:3000/restaurants')
@@ -81,16 +49,17 @@ const App = ()=> {
 			setData(response.data)
 		  })
 	  }, [])
-
+	// set sortFunction value to decide which sorting function to use:
+	  if (sortSate === 0 || sortSate===2){
+			sortFunction = sortShopA;
+	  }else{
+		   	sortFunction = sortShopD;
+	  }
 	  return (
 		  <div className='app'>
 			  <div className='buttonDiv'>
-			  <Button sort = {sortShopA} value ="Sort restaurants alphabetically ascendingly" />
-			  <Button sort = {sortShopD} value ="Sort restaurants alphabetically descendingly"/>
+			  	<Button sort = {sortFunction} value ="Sort restaurants alphabetically" />
 			  </div>
-			  {/* <button className='button' onClick={sortShopA}>
-			  Sort restaurants alphabetically
-			  </button> */}
 			  <div className='content'>
 			  	<Print data = {data} />
 			  </div>
