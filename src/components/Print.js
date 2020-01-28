@@ -1,15 +1,15 @@
-import React from 'react';
-import Eachshop from './Eachshop'
+import React from 'react'
+import EachShop from './EachShop'
 
 const Print =(props) =>{
-	const { data } = props;
-	const row = () => data.map(shop =>
-		<Eachshop key= {shop.location} shop = {shop} /> )
-		return(
+	const { data } = props
+	const showRestaurants = () => data.map(shop =>
+		<EachShop key= {shop.location} shop = {shop} /> )
+	return(
 		<>
-			{row()}
+			{showRestaurants()}
 		</>
 	)
 }
 
-export default Print;
+export default Print

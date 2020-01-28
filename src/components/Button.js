@@ -1,14 +1,20 @@
-import React from 'react';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const Button = (props) =>{
-	const { sort, value } = props;
+const Button = ({ sort, value }) =>{
 	return (
 		<>
 			<button  className='button' onClick={sort}>
-			  {value}
+				{value}
 			</button>
 		</>
 	)
 }
 
-export default Button;
+//
+Button.propTypes = {
+	sort: PropTypes.func.isRequired,
+	value: PropTypes.string.isRequired
+}
+
+export default Button

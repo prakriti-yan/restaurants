@@ -8,6 +8,10 @@ In the project directory, you can run:
 
 First install all the packages needed for running the project.
 
+## `npm run json-server`
+
+To serve the data on json-server.
+
 ### `npm start`
 
 Runs the app in the development mode.<br />

@@ -3,27 +3,41 @@
   text-align: center;
   padding-top: 1rem;
   padding-left: 1rem;
+  cursor: pointer;
+ }
+ .shop_name:hover{
+  color: rgb(177, 65, 65);
  }
 
  .shop_name{
   position: absolute;
   color: white;
-  /* background-color: lightcyan; */
+  text-shadow: 2px 2px 8px rgba(89, 0, 255, 0.685);
   text-align: left;
   font-size: 25px;
-  /* font-size: 2vw; */
-  font-family: 'Comic Sans MS';
+  font-family: Arial, Helvetica, sans-serif;
   left: 30px;
   
+ }
+
+ .header{
+  text-align:center;
+  font-size: 50px;
+  text-shadow: 2px 2px 8px rgba(51, 10, 128, 0.829);
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
  }
  
  .button{
   font-size: 20px;
   text-align: center;
-  background-color: navy;
-  font-family: 'Comic Sans MS';
-  color: white;
+  /* background-color: navy; */
+  background-color: aliceblue;
+  font-family: Arial, Helvetica, sans-serif;
+  color: navy;
   width: 20rem;
+  height: 3rem;
+  border-radius: 0.5rem;
  }
 
  .buttonDiv{
@@ -42,17 +56,20 @@
  }
 
  .content{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
    align-items: center;
    display: flex;
    flex-flow: row;
    flex-wrap: wrap;
    padding:5px;
    overflow-x: auto;
-   margin: auto;
+   /* margin: auto; */
+   justify-content: center;
  }
 
  body{
-  margin: auto;
+  /* margin: auto; */
+  margin-bottom: 50px;
+  margin-top: 20px;
   background-color: lavender;
  }
