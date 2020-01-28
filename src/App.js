@@ -5,7 +5,7 @@ import axios from 'axios';
 const Eachshop = (props) =>{
 	const { shop } = props;
 	return (
-		<div className = 'contrainer'>
+		<div className = 'section'>
 			<h3 className='shop_name'>{shop.name} </h3>
 			<img className='image' src = {shop.image} alt = {shop.name}/>
 		</div>
@@ -25,9 +25,11 @@ const Print =(props) =>{
 const Button = (props) =>{
 	const { sort, value } = props;
 	return (
-		<button className='button' onClick={sort}>
+		<div>
+		<button  className='button' onClick={sort}>
 			  {value}
 		</button>
+		</div>
 	)
 }
 const firstButton = document.getElementsByClassName('button'); 
@@ -60,8 +62,8 @@ const App = ()=> {
 		// event.preventDefault();
 		const newData = [...data];
 		newData.sort((a, b) =>{
-			const nameA = a.description.toUpperCase();
-			const nameB = b.description.toUpperCase();
+			const nameA = a.name.toUpperCase();
+			const nameB = b.name.toUpperCase();
 			if (nameA < nameB) {
 				return 1;
 			  }else if (nameA > nameB) {
@@ -74,21 +76,24 @@ const App = ()=> {
 
 	useEffect(()=>{
 		axios
-		  .get('http://localhost:3002/restaurants')
+		  .get('http://localhost:3000/restaurants')
 		  .then(response=>{
 			setData(response.data)
 		  })
 	  }, [])
 
 	  return (
-		  <div>
+		  <div className='app'>
+			  <div className='buttonDiv'>
 			  <Button sort = {sortShopA} value ="Sort restaurants alphabetically ascendingly" />
-			 
 			  <Button sort = {sortShopD} value ="Sort restaurants alphabetically descendingly"/>
+			  </div>
 			  {/* <button className='button' onClick={sortShopA}>
 			  Sort restaurants alphabetically
 			  </button> */}
-			  <Print data = {data} />
+			  <div className='content'>
+			  	<Print data = {data} />
+			  </div>
 		  </div>
 	  )
 }

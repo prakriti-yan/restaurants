@@ -1,35 +1,59 @@
- .container{
+ .section{
   position: relative;
   text-align: center;
-  /* color: white; */
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+  margin: auto;
+  background-color: cornflowerblue;
  }
 
  .shop_name{
   position: absolute;
   color: white;
-  font-size: 6vw;
+  text-align: center;
+  font-size: 2vw;
   font-family: 'Comic Sans MS';
-  /* top: 8px; */
-  left: 16px;
+  left: 20px;
   
  }
 
  .image{
-  /* min-height:100%; */
-  max-width: 95%;
-  max-height: 95%;
-  display: block;
+  width: 20rem;
+  /* height: 13rem; */
  }
 
  .button{
-  font-size: 2vw;
-  box-shadow: 0 5px #666;
+  font-size: 1.5vw;
   text-align: center;
-  /* transform: translateY(4px); */
   font-family: 'Comic Sans MS';
+  width: 20rem;
  }
 
-
+ .buttonDiv{
+  position: sticky;
+  z-index: 10;
+  text-align: center;
+  top: 0px;
+ }
+/* 
  div{
    margin: auto;
+ } */
+
+ /* .app{
+   margin: 2rem;
+ } */
+
+ .content{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+   align-items: center;
+   display: flex;
+   flex-flow: row;
+   flex-wrap: wrap;
+   padding:5px;
+   overflow-x: auto;
+   
+   /* -webkit-overflow-scrolling: touch; */
+   /* margin: auto; */
+
  }
