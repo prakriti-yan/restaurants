@@ -16,7 +16,10 @@ const EachShop = (props) =>{
 	}
 	return (
 		<div className = 'section' onClick={display} >
-			<h3 className='shop_name'>{show}</h3>
+			<h3 className='shop_name'>{shop.name}</h3>
+			{click===1 &&
+				<h3 className='shop_tag'>{show}</h3>
+			}
 			<img className='image' src = {shop.image} alt = {shop.name}/>
 		</div>
 	)

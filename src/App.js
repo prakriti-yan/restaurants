@@ -9,6 +9,7 @@ let sortSate = 0
 const App = () => {
 	const [data, setData] = useState([])
 	let sortFunction
+	let text
 	// Function for sorting ascendingly:
 	const sortShopA = () => {
 		sortSate = 1
@@ -52,14 +53,17 @@ const App = () => {
 	// set sortFunction value to decide which sorting function to use:
 	if (sortSate === 0 || sortSate === 2) {
 		sortFunction = sortShopA
+		text='Sort restaurants alphabetically ⇧'
+
 	} else {
 		sortFunction = sortShopD
+		text='Sort restaurants alphabetically ⇩'
 	}
 	return (
 		<div className='app'>
-			<h2 className='header'>Foodie love</h2>
+			<h2 className='header'>Food lover</h2>
 			<div className='buttonDiv'>
-				<Button sort={sortFunction} value="Sort restaurants alphabetically" />
+				<Button sort={sortFunction} value={text} />
 			</div>
 			<div className='content'>
 				<Print data={data} />
