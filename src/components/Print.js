@@ -1,8 +1,8 @@
 import React from 'react'
 import EachShop from './EachShop'
+import PropTypes from 'prop-types'
 
-const Print =(props) =>{
-	const { data } = props
+const Print =({ data }) =>{
 	const showRestaurants = () => data.map(shop =>
 		<EachShop key= {shop.location} shop = {shop} /> )
 	return(
@@ -10,6 +10,10 @@ const Print =(props) =>{
 			{showRestaurants()}
 		</>
 	)
+}
+
+Print.propTypes = {
+	data: PropTypes.array.isRequired,
 }
 
 export default Print
