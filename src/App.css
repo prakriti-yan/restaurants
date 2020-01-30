@@ -1,19 +1,15 @@
 .header{
   text-align:center;
-  font-size: 50px;
+  font-size: 4rem;
   text-shadow: 2px 2px 8px rgb(100, 13, 158);
-  /* text-shadow: 2px 2px 8px rgba(10, 10, 10, 0.973); */
   color: white;
   font-family: Arial, Helvetica, sans-serif;
  }
  
  .button{
-  font-size: 20px;
+  font-size: 1.2rem;
   text-align: center;
-  /* background-color: navy; */
-  /* background-color: aliceblue; */
   font-family: Arial, Helvetica, sans-serif;
-  /* color: navy; */
   color: rgb(107, 7, 138);
   width: 20rem;
   height: 3rem;
@@ -25,7 +21,7 @@
   position: sticky;
   z-index: 10;
   text-align: center;
-  top: 0px;
+  top: 0rem;
  }
 
  .section{
@@ -33,52 +29,32 @@
   text-align: center;
   padding-top: 1rem;
   padding-left: 1rem;
-  /* cursor: pointer; */
  }
  
-
- .shop_name{
+ .textInSection{
   position: absolute;
   color: white;
   text-shadow: 2px 2px 8px rgba(89, 0, 255, 0.685);
   text-align: left;
-  font-size: 25px;
+  font-size: 1.7rem;
   font-family: Arial, Helvetica, sans-serif;
   left: 30px;
  }
 
- .shop_name:hover{
+ .textInSection:hover{
   color: rgb(177, 65, 65);
-  /* color: rgba(163, 24, 168, 0.637); */
-  /* text-shadow: 2px 2px 8px rgb(31, 4, 39); */
+ }
+
+ .shop_tag{
+  top: 140px;
  }
  
  .image{
-  /* width: 20%; */
  width: 20rem;
  height: 15rem;
  object-fit: cover;
  border-radius: 0.5rem;
 }
-
- 
-
- .shop_tag{
-  position: absolute;
-  top: 140px;
-  left: 30px;
-  color: white;
-  text-shadow: 2px 2px 8px rgba(89, 0, 255, 0.685);
-  text-align: left;
-  font-size: 25px;
-  font-family: Arial, Helvetica, sans-serif;
- }
-
- .shop_tag:hover{
-  color: rgb(177, 65, 65);
-  /* color: rgba(163, 24, 168, 0.637); */
-  /* text-shadow: 2px 2px 8px rgb(31, 4, 39); */
- }
 
  .content{
    align-items: center;

@@ -4,44 +4,35 @@ import axios from 'axios'
 import Print from './components/Print'
 import Button from './components/Button'
 
+// sortState is to record the sorting state:0 means the page is rendered and no button was clicked
+// 											1 means the page is now ascendingly sorted
+// 											2 means the page is now descendingly sorted
 let sortState = 0
 
 const App = () => {
 	const [data, setData] = useState([])
 	let sortFunction
 	let buttonText
-	// Function for sorting restaurants based on name ascendingly:
-	const sortAsc = () => {
-		sortState = 1
+
+	// sorting method:
+	const sortMethod = (order) => {
+		let n
+		(order === 'Ascending') ? sortState = 1 : sortState = 2 
 		const newData = [...data]
 		newData.sort((a, b) => {
 			const nameA = a.name.toUpperCase()
 			const nameB = b.name.toUpperCase()
 			if (nameA < nameB) {
-				return -1
+				(order === 'Ascending') ? n = -1 : n = 1
+				return n
 			} else if (nameA > nameB) {
-				return 1
-			}
-			return 0
-		})
+				(order === 'Ascending') ? n = 1 : n = -1
+				return n}	
+			return 0}
+		)
 		setData(newData)
 	}
-	// Function for sorting restaurants based on name descendingly:
-	const sortDesc = () => {
-		sortState = 2
-		const newData = [...data]
-		newData.sort((a, b) => {
-			const nameA = a.name.toUpperCase()
-			const nameB = b.name.toUpperCase()
-			if (nameA < nameB) {
-				return 1
-			} else if (nameA > nameB) {
-				return -1
-			}
-			return 0
-		})
-		setData(newData)
-	}
+	
 	// getting the data from json server using axios:
 	useEffect(() => {
 		axios
@@ -50,13 +41,14 @@ const App = () => {
 				setData(response.data)
 			})
 	}, [])
+
 	// pass sortFunction value to based on sortState:
 	if (sortState === 0 || sortState === 2) {
-		sortFunction = sortAsc
+		sortFunction = () => sortMethod('Ascending')
 		buttonText='Sort restaurants alphabetically ⇧'
 
 	} else {
-		sortFunction = sortDesc
+		sortFunction = () => sortMethod('Descending')
 		buttonText='Sort restaurants alphabetically ⇩'
 	}
 	return (
