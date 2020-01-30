@@ -15,6 +15,7 @@ const App = () => {
 	let button
 
 	// Sorting method:
+	// "order" parameter is expected as a string with value of either 'Asc' or 'Desc'.
 	const sortMethod = (order) => {
 		let n
 		sortState = order
