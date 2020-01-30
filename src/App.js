@@ -4,20 +4,20 @@ import axios from 'axios'
 import Print from './components/Print'
 import Button from './components/Button'
 
-// sortState is to record the sorting state:null means the page is rendered and no button was clicked
-// 											Asc means the page is now ascendingly sorted
-// 											Desc means the page is now descendingly sorted
+// sortState is to record the sorting state:
+// null means the page is rendered and no button was clicked
+// Asc means the page is now ascendingly sorted
+// Desc means the page is now descendingly sorted
 let sortState = null
 
 const App = () => {
 	const [data, setData] = useState([])
-	let sortFunction
-	let buttonText
+	let button
 
 	// Sorting method:
 	const sortMethod = (order) => {
 		let n
-		(order === 'Asc') ? sortState = 'Asc' : sortState = 'Desc'
+		sortState = order
 		const newData = [...data]
 		newData.sort((a, b) => {
 			const nameA = a.name.toUpperCase()
@@ -42,20 +42,23 @@ const App = () => {
 			})
 	}, [])
 
-	// pass sortFunction value to based on sortState:
+	// Create button with different sorting fuction based on sortState:
 	if (sortState === null || sortState === 'Desc') {
-		sortFunction = () => sortMethod('Asc')
-		buttonText='Sort restaurants alphabetically ⇧'
-
+		button = <Button
+					sort={() => sortMethod('Asc')} 
+					value={'Sort restaurants alphabetically ⇧'}
+				 />
 	} else {
-		sortFunction = () => sortMethod('Desc')
-		buttonText='Sort restaurants alphabetically ⇩'
+		button = <Button 
+					sort={() => sortMethod('Desc')} 
+					value={'Sort restaurants alphabetically ⇩'} 
+				 />
 	}
 	return (
 		<div className='app'>
 			<h2 className='header'>Food lovers</h2>
 			<div className='buttonDiv'>
-				<Button sort={sortFunction} value={buttonText} />
+				{button}
 			</div>
 			<div className='content'>
 				<Print data={data} />
